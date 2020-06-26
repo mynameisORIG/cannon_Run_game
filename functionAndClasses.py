@@ -17,6 +17,11 @@ class Link:
     player_step = 40
     LOZ_Link = pygame.transform.scale(LOZ_Link, (125, 75))
 
+class Dog:
+    Maddie = pygame.image.load('./images/Dog.png')
+    player_step = 40
+    Maddie = pygame.transform.scale(Maddie, (175, 100))
+
 class enemy:
     cannon = pygame.image.load('./images/cannon.png')
     cannon = pygame.transform.scale(cannon, (125,75))
@@ -26,6 +31,7 @@ class enemy:
 # functions
 
 screen = pygame.display.set_mode((GameVariables.WIDTH, GameVariables.HEIGHT))
+        
 
 def detect_collision(player_pos, enemy_pos1):
     p_x = player_pos[0]
@@ -76,7 +82,6 @@ def Winner():
     done = False
 
     font = pygame.font.SysFont("Bauhaus 93", 72)
-
     text = font.render("You Win!!!!!", True, (0, 128, 0))
 
     while not done:
@@ -92,4 +97,4 @@ def Winner():
         
         pygame.display.flip()
         clock.tick(60)
-    sys.exit() 
+        sys.exit() 
