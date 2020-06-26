@@ -2,12 +2,14 @@
 
 # libraries
 import pygame, sys, random
-from functionAndClasses import GameVariables, Link, enemy, detect_collision, drop_enemies, draw_enemies ,updateEnemyPos, collision_check, Winner
+from functionAndClasses import GameVariables, Link, Dog, enemy 
+from functionAndClasses import detect_collision, drop_enemies, draw_enemies ,updateEnemyPos, collision_check, Winner
+
 
 #you have to initialize pygame first
 pygame.init()
 
-pygame.display.set_caption("Link's endless enemies")
+pygame.display.set_caption("The endless cannons")
 
 # variables
 player_pos = [650, 370, 50]
@@ -16,6 +18,7 @@ enemy_pos2 = [55, 500]
 enemy_pos3 = [55, 300]
 enemy_list1 = [enemy_pos1]
 delay = random.random()
+player = Link.LOZ_Link
 
 screen = pygame.display.set_mode((GameVariables.WIDTH, GameVariables.HEIGHT))
 
@@ -38,8 +41,12 @@ while not GameVariables.game_over:
             elif event.key == pygame.K_UP:
                 y -= Link.player_step
             elif event.key == pygame.K_DOWN:
-                y += Link.player_step 
+                y += Link.player_step
             player_pos = [x,y, 50]
+            if event.key == pygame.K_1:
+                player = Link.LOZ_Link
+            elif event.key == pygame.K_2:
+                player = Dog.Maddie
 
         screen.blit(GameVariables.bg, (0,0))
 
@@ -82,7 +89,7 @@ while not GameVariables.game_over:
         screen.blit(enemy.cannon, (55, 475, 0, 0))
         screen.blit(enemy.cannon, (55, 375, 0, 0))
         screen.blit(enemy.cannon, (55, 275, 0, 0))
-        screen.blit(Link.LOZ_Link, (player_pos[0], player_pos[1], player_pos[2], player_pos[2]))
+        screen.blit(player, (player_pos[0], player_pos[1], player_pos[2], player_pos[2]))
         GameVariables.clock.tick(30)
         
         pygame.display.update()
